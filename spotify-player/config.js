@@ -1,7 +1,9 @@
 const CONFIG = {
     CLIENT_ID: '8ea31b7b395747969ec5b9c9e5af6d0b',
     
-    REDIRECT_URI: window.location.origin + '/callback.html',
+    REDIRECT_URI: window.location.hostname.includes('github.io') 
+        ? 'https://vitorloula.github.io/Ritmo/callback.html'
+        : window.location.origin + '/callback.html',
     
     SCOPES: [
         'user-read-private',
