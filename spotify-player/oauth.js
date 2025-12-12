@@ -23,7 +23,7 @@ const SpotifyAuth = {
     async login() {
         OAuthLogger.log('Iniciando fluxo OAuth 2.0 + PKCE...', 'info');
         
-        if (!CONFIG.CLIENT_ID || CONFIG.CLIENT_ID === 'SEU_CLIENT_ID_AQUI') {
+        if (!CONFIG.CLIENT_ID) {
             OAuthLogger.log('ERRO: Client ID não configurado.', 'error');
             App.showToast('Configure seu Client ID no arquivo config.js', 'error');
             return;
