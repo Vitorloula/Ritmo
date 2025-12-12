@@ -1,5 +1,5 @@
 const CONFIG = {
-    CLIENT_ID: '8ea31b7b395747969ec5b9c9e5af6d0b',
+    CLIENT_ID: (window.LOCAL_ENV && window.LOCAL_ENV.CLIENT_ID) ? window.LOCAL_ENV.CLIENT_ID : 'SEU_CLIENT_ID_AQUI',
     
     REDIRECT_URI: window.location.hostname.includes('github.io') 
         ? 'https://vitorloula.github.io/Ritmo/callback.html'
