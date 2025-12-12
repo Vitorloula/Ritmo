@@ -26,8 +26,6 @@ jobs:
 
       - name: Inject Client ID
         run: |
-          # Substitui o placeholder ou ID exisente pelo Secret do GitHub
-          # O arquivo config.js está dentro da pasta spotify-player
           sed -i "s|CLIENT_ID: '.*'|CLIENT_ID: '${{ secrets.CLIENT_ID }}'|" spotify-player/config.js
 
       - name: Setup Pages
