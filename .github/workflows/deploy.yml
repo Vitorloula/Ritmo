@@ -1,0 +1,43 @@
+name: Deploy Spotify Player
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Inject Client ID
+        run: |
+          # Substitui o placeholder ou ID exisente pelo Secret do GitHub
+          # O arquivo config.js está dentro da pasta spotify-player
+          sed -i "s|CLIENT_ID: '.*'|CLIENT_ID: '${{ secrets.CLIENT_ID }}'|" spotify-player/config.js
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "spotify-player"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
