@@ -55,6 +55,7 @@ const SpotifyAuth = {
         
         OAuthLogger.log('Redirecionando para Spotify...', 'info');
         OAuthLogger.log(`URL: ${CONFIG.AUTH_ENDPOINT}`, 'info');
+        OAuthLogger.log(`Redirect: ${CONFIG.REDIRECT_URI}`, 'info');
         OAuthLogger.log(`Escopos solicitados: ${CONFIG.SCOPES.length}`, 'info');
         
         window.location.href = authUrl;
